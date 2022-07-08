@@ -17,4 +17,10 @@ fn game() {
         }
     }
     println!("Heads: {}, Tails: {}", heads, tails);
+
+    if heads > tails {
+        println!("You won");
+    } else {
+        println!("You lost");
+    }
 }
