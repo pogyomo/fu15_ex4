@@ -11,13 +11,15 @@ fn name() -> String {
     stdout().flush().unwrap();
     let mut name = String::new();
     stdin().read_line(&mut name).unwrap();
-    print!("Hello, {}!", name);
+    name = name.trim_end_matches('\n').to_string();
+    println!("Hello, {}!", name);
     name
 }
 
 fn game(name: String) {
     let mut rng = rand::thread_rng();
     let (mut heads, mut tails) = (0, 0);
+    println!("Tossing a coin...");
     for round in 1..=3 {
         if rng.gen_bool(1.0 / 2.0) {
             println!("Round {}: Heads", round);
