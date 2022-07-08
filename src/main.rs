@@ -2,8 +2,8 @@ use std::io::{stdin, stdout, Write};
 use rand::Rng;
 
 fn main() {
-    let _name = name();
-    game();
+    let name = name();
+    game(name);
 }
 
 fn name() -> String {
@@ -11,11 +11,11 @@ fn name() -> String {
     stdout().flush().unwrap();
     let mut name = String::new();
     stdin().read_line(&mut name).unwrap();
-    print!("Hello, {}", name);
+    print!("Hello, {}!", name);
     name
 }
 
-fn game() {
+fn game(name: String) {
     let mut rng = rand::thread_rng();
     let (mut heads, mut tails) = (0, 0);
     for round in 1..=3 {
@@ -30,8 +30,8 @@ fn game() {
     println!("Heads: {}, Tails: {}", heads, tails);
 
     if heads > tails {
-        println!("You won");
+        println!("{} won!", name);
     } else {
-        println!("You lost");
+        println!("{} lost!", name);
     }
 }
