@@ -1,7 +1,18 @@
+use std::io::{stdin, stdout, Write};
 use rand::Rng;
 
 fn main() {
+    let _name = name();
     game();
+}
+
+fn name() -> String {
+    print!("Who are you?\n> ");
+    stdout().flush().unwrap();
+    let mut name = String::new();
+    stdin().read_line(&mut name).unwrap();
+    print!("Hello, {}", name);
+    name
 }
 
 fn game() {
